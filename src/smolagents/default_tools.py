@@ -113,7 +113,7 @@ class DuckDuckGoSearchTool(Tool):
             raise ImportError(
                 "You must install package `duckduckgo_search` to run this tool: for instance run `pip install duckduckgo-search`."
             ) from e
-        self.ddgs = DDGS(**kwargs)
+        self.ddgs = DDGS(verify=False, **kwargs)
 
     def forward(self, query: str) -> str:
         results = self.ddgs.text(query, max_results=self.max_results)
